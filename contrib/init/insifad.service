@@ -1,0 +1,26 @@
+[Unit]
+Description=Insifa's distributed currency daemon
+After=network.target
+
+[Service]
+User=insifa
+Group=insifa
+
+Type=forking
+PIDFile=/var/lib/insifad/insifad.pid
+
+ExecStart=/usr/bin/insifad -daemon -pid=/var/lib/insifad/insifad.pid \
+          -conf=/etc/insifa/insifa.conf -datadir=/var/lib/insifad
+
+ExecStop=-/usr/bin/insifa-cli -conf=/etc/insifa/insifa.conf \
+         -datadir=/var/lib/insifad stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

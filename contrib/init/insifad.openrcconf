@@ -1,0 +1,26 @@
+# /etc/conf.d/insifad: config file for /etc/init.d/insifad
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/insifa/insifa.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/insifad"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/insifad.pid"
+
+# Where to write insifad data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/insifad"
+
+# User and group to own insifad process
+#BITCOIND_USER="insifa"
+#BITCOIND_GROUP="insifa"
+
+# Path to insifad executable
+#BITCOIND_BIN="/usr/bin/insifad"
+
+# Nice value to run insifad under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""
