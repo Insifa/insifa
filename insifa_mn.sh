@@ -9,7 +9,9 @@ COIN_DAEMON='insifad'
 COIN_CLI='insifa-cli'
 COIN_TX='insifa-tx'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/Insifa/insifa/releases/download/v1.0.0/insifa-1.0.0-x86_64-linux-gnu.tar.gz'
+COIN_VERSION='1.0.0'
+COIN_ZIP="insifa-@{COIN_VERSION}-x86_64-linux-gnu.tar.gz"
+COIN_TGZ="https://github.com/Insifa/insifa/releases/download/v@{COIN_VERSION}/@{COIN_ZIP}"
 COIN_NAME='Insifa'
 COIN_PORT=3509
 RPC_PORT=3510
@@ -28,10 +30,9 @@ function download_node() {
   wget -q $COIN_TGZ
   compile_error
   tar xvzf $COIN_ZIP -C $COIN_PATH >/dev/null 2>&1
-  cd - >/dev/null 2>&1
+  cd $COIN_PATH >/dev/null 2>&1
   chmod +x $COIN_DAEMON $COIN_CLI
   compile_error
-  cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
